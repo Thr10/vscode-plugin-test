@@ -4,7 +4,7 @@ let genCount = 0;
 const jsonContent = {
     log: []
 }
-const path = './log.fuzz.json';
+const path = './log.fuzz.mylog';
 
 const w =  (content) => {
     writeFile(path, JSON.stringify(content, null, 2), (error) => {
@@ -19,7 +19,7 @@ const w =  (content) => {
 
 
 const interval = setInterval(() => {
-    if (genCount  === 10) return clearInterval(interval);
+    if (genCount  === 100) return clearInterval(interval);
     genCount++;
     jsonContent.log.push(`${genCount} - ${Math.random()} - ${new Date().getTime()}`);
     w(jsonContent)
